@@ -3,6 +3,20 @@
 本项目所有值得注意的改动都记在这里。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 All notable changes to this project are documented here. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-10-20
+
+### 新增 / Added
+- 新技能 `landscape-first-reframe` — 以 16:9 横版为母版派生 4:3 / 3:4 / 9:16 / 1:1，脚本逐比例检查文字安全区并给出 FFmpeg 命令 / new skill: derive other ratios from a 16:9 master and check text safe areas per ratio
+- 新技能 `rule-ledger` — 带生效日期的规则账本，扫描技能文件中的旧值残留并输出补丁草稿 / new skill: dated rule ledger that finds stale values in skill files and drafts patches
+- 每个技能新增 `references/`、`scripts/`（Python 标准库小工具）和 `tests/`（自编测试材料）/ every skill gains references/, stdlib scripts/ and synthetic tests/
+- `evals/` 新增 2 个技能的测试用例（尚未跑结果）/ test cases for the 2 new skills (no results yet)
+- `examples/` 新增 2 个样例；完整英文 README（README.en.md）/ 2 new examples; full English README
+
+### 变更 / Changed
+- 原有 6 个技能的 SKILL.md 重写：拆出参考资料，新增「常见错误」「输出模板」「工具」三节 / the 6 original SKILL.md files restructured with common mistakes, output templates and tools sections
+- README：技能数 7 → 9，新增「和热门仓库有什么不一样」，English 链接指向 README.en.md / README: 9 skills, comparison section, English link to README.en.md
+- `evals/RESULTS.md` 保持 v0.2.0 原样 / v0.2.0 results kept unchanged
+
 ## [0.2.0] - 2026-10-20
 
 ### 新增 / Added

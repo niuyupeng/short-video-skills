@@ -1,0 +1,57 @@
+{
+  "skill_name": "rule-ledger",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "负责人今天说视频一律改成横版 16:9，之前好几个技能里写的是竖版，帮我查哪些要改。",
+      "input": "一个规则表（含旧的 9:16 规则和新的 16:9 规则）和一个技能目录。",
+      "expected_output": "记新规则、标旧规则已废止、列出残留行并出补丁草稿",
+      "expectations": [
+        "新规则带生效日期记入账本",
+        "旧规则标为已废止而不是删除",
+        "列出仍写着旧值的文件和行号",
+        "只出补丁草稿，不直接改技能文件"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "两个技能里人声比配乐高多少 LU 写得不一样，以哪个为准？",
+      "input": "规则表里同一天有 4 LU 和 6 LU 两条。",
+      "expected_output": "识别为同日冲突，要求人工裁定",
+      "expectations": [
+        "指出这是同一天的冲突",
+        "不自行挑一个值",
+        "说明需要找定规则的人裁定"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "改了一批规则，帮我做一次规则体检。",
+      "input": "规则表 + 技能目录。",
+      "expected_output": "运行扫描并按 CONFLICT / SUPERSEDED / STALE 分类汇报",
+      "expectations": [
+        "输出冲突、已废止、残留三类结果的数量",
+        "已用删除线标掉的旧写法不算残留",
+        "建议改完后重新扫描"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我写一个新的封面技能。",
+      "input": "无",
+      "expected_output": "不应触发（这是写单个技能，不是规则冲突管理）",
+      "expectations": [
+        "不输出规则账本或冲突扫描"
+      ],
+      "files": []
+    }
+  ]
+}

@@ -12,7 +12,7 @@
 | `expected_output` | 期望产出的一句话描述 |
 | `expectations` | 逐条可判定的标准，评分时逐条判 通过 / 不通过 |
 
-> 我们自己跑过一次的结果见 [RESULTS.md](./RESULTS.md)（单模型、样本小，只看方向）。欢迎你用自己的模型再跑，并附上模型名、日期和原始输出。
+> 我们自己跑过一次的结果见 [RESULTS.md](./RESULTS.md)（单模型、样本小，只看方向；覆盖 v0.2.0 的 7 个技能。v0.3.0 新增的 `landscape-first-reframe.json`、`rule-ledger.json` 只有用例，尚未跑结果）。欢迎你用自己的模型再跑，并附上模型名、日期和原始输出。
 
 ## 怎么跑
 
@@ -42,7 +42,7 @@
 
 Each skill has `evals/<skill>.json`, compatible with the skill-creator `evals.json` format from anthropics/skills, plus `trigger_prompt` and `should_trigger` (negative cases test false triggering).
 
-Our own run (single model, small sample): [RESULTS.md](./RESULTS.md). Please re-run with your model and publish model, date and raw outputs.
+Our own run (single model, small sample, covering the 7 v0.2.0 skills): [RESULTS.md](./RESULTS.md). `landscape-first-reframe.json` and `rule-ledger.json` (added in v0.3.0) have test cases only, no results yet. Please re-run with your model and publish model, date and raw outputs.
 
 **Run:** install the skill → new session per case → send `trigger_prompt` with `input` → record whether the skill triggered and the full output → grade each expectation pass/fail (human or blind LLM judge) → report pass rate; report false-trigger rate on negatives separately.
 

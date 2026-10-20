@@ -1,0 +1,57 @@
+{
+  "skill_name": "landscape-first-reframe",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "这条横版片子还要出竖版 3:4 和 9:16，帮我看看字幕会不会被裁掉。",
+      "input": "母版 1920×1080；字幕框 x=360 y=940 w=1200 h=100；右上角标 x=1560 y=60 w=300 h=80。",
+      "expected_output": "逐比例给出裁切框和出界元素，并给补救方案",
+      "expectations": [
+        "分别给出 3:4 和 9:16 的裁切框坐标",
+        "指出字幕和角标在竖版中出界",
+        "给出至少一种补救方案（平移、重排字幕、加底板等）",
+        "给出可执行的 FFmpeg 命令或调用检查脚本"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "我准备在横版母版上排字幕，放哪儿才能 4:3、3:4、9:16 都不出界？",
+      "input": "母版 1920×1080。",
+      "expected_output": "给出公共安全区数值",
+      "expectations": [
+        "给出公共文字区的具体像素范围",
+        "说明要给裁切边留边距",
+        "说明以哪个最窄比例为准"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "竖版裁出来人物被切了一半，能不能直接拉伸成 3:4？",
+      "input": "母版 1920×1080，人物在画面左三分之一。",
+      "expected_output": "拒绝拉伸，给出平移裁切或加底板方案",
+      "expectations": [
+        "明确不建议拉伸变形",
+        "给出平移裁切（offset）或加底板方案",
+        "建议改完重新检查"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我写这条视频的 B 站简介。",
+      "input": "无",
+      "expected_output": "不应触发",
+      "expectations": [
+        "不输出裁切或安全区内容"
+      ],
+      "files": []
+    }
+  ]
+}

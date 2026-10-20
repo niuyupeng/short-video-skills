@@ -17,18 +17,12 @@ Run twice: on the script (before production) and on the final package (video + t
 - No source → remove or soften, never kept for flow.
 
 ## 2. Health & safety claims (strictest)
-- No diagnosis, cure, treatment, drug/supplement promises; no 治愈/根治/替代就医.
-- Tips low-risk for the public; state who should not try (孕妇、儿童、慢病、过敏) and 「症状持续请就医」 where relevant.
-- Effect sizes as in the source (relative vs absolute); no animal/cell → human extrapolation.
-- Heat, chemicals, electricity, food safety: check the hazard path explicitly.
+健康类最严：不诊断、不承诺疗效、写明不适合人群、效应量照原文、不从动物/细胞外推到人。
+详见 [references/health-claims.md](references/health-claims.md)。
 
 ## 3. Platform 违规 check
-- Text: unsourced 极限词, 医疗/金融承诺, 引流, 敏感时政.
-- Visual/audio: other platforms' watermarks, unlicensed music/footage, real likeness, 危险模仿.
-- AI disclosure on every platform: 如实标识 AI，不冒充、不虚报制作流程。
-- 标题/作品说明不得写与实际流程不符的制作声明；不在画面上显示内部工具名。
-- Cover/title match content (no 标题党).
-- First comment: no 引流 or 诱导互动.
+文字、画面音频、AI 标识、标题与内容一致、首评不引流，逐项过。
+详见 [references/platform-rules.md](references/platform-rules.md)。
 
 ## 4. Verdict
 ```
@@ -39,3 +33,23 @@ Run twice: on the script (before production) and on the final package (video + t
 ```
 - VETO blocks publishing until fixed and re-reviewed; other roles cannot override. Only the owner can, explicitly.
 - Keep a dated review log per video.
+
+## 常见错误
+- 拿百科、新闻、自媒体当一手来源，它们只能当线索。
+- 只看摘要就判 OK：要摘到来源原话。
+- 「为了顺」保留没来源的句子。
+- 把相对风险写成绝对风险，或把动物实验外推到人。
+- 只审稿子不审成片：标题、封面、字卡、首评也要审。
+
+## 输出模板
+```
+审核结论: PASS | FIX | VETO
+| # | 原句 | 类型 | 一手来源 | 来源原话 | 结论 OK/改/删 |
+阻断项: …
+必改: 原句 → 改句
+建议: …
+复审条件: …
+```
+
+## 工具
+`scripts/check_fact_ledger.py LEDGER.md`：结论只能是 OK/改/删；判 OK 的必须有一手来源和原话；疑似二手来源报错。

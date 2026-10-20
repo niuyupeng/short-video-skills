@@ -12,12 +12,8 @@ Hard rules
 - Follow the project's cross-post rule file if one exists; it overrides this generic list.
 
 ## 1. Per-video adaptation checklist
-- [ ] Strip source-platform-only tags, @mentions, 活动话题, 合集 wording, any mention of other platforms.
-- [ ] AI disclosure ticked per platform (B站 创作者声明「该视频使用人工智能合成技术」; 小红书「内容由AI生成」; 视频号 its AI label).
-- [ ] B站: 16:9 1920×1080 + 4:3 cover, title ≤80 字 (aim 25–40: 疑问钩子 + 具体出处/数字), 分区, ≤10 plain tags, 简介 without vote CTA, pinned first comment, 自制.
-- [ ] 小红书: 3:4 1080×1440 cover (视频仍为 16:9), text ≤30% area, title ≤20 字 notebook tone, short-line body + source + one AB question, 5–8 search-intent topics, no 导流.
-- [ ] 视频号: title ≤ ~30 字 plain-spoken, 3–5 topics, cover 3:4 safe; tone slightly older/broader audience.
-- [ ] Health claims: confirm 审核 PASS id before drafting.
+逐平台去掉源平台痕迹、勾 AI 标识、按平台规格改标题/封面/标签。机械项用 `scripts/check_crosspost.py` 检查。
+详见 [references/platform-checklist.md](references/platform-checklist.md)。
 
 ## 2. Deliverable per video (one folder)
 ```
@@ -42,3 +38,22 @@ Hard rules
 
 ## 5. Daily brief (≤3 lines)
 交付了什么 / 需要拍板什么 / 卡在哪.
+
+## 常见错误
+- 直接下载带水印的版本去改投，要用本地原片。
+- 改投时顺手加了新事实，没过审核。
+- 小红书正文里提「抖音同款」等其他平台名。
+- 忘勾 AI 标识。
+- 未经批准就排期或发布：这里所有产出都是草稿。
+
+## 输出模板
+```
+<date>_<slug>/
+  STATUS: DRAFT – awaiting approval
+  bili.txt  标题: … / 分区: … / 标签: a,b,c / 简介: … / AI标识: 是 / 置顶首评: …
+  xhs.txt   标题: … / 正文: … / 话题: … / AI标识: 是
+  sph.txt   标题: … / 描述: … / 话题: … / AI标识: 是
+```
+
+## 工具
+`scripts/check_crosspost.py <folder>`：检查 STATUS 草稿标记、各平台标题字数、标签个数、AI 标识、是否提到其他平台或引流词。

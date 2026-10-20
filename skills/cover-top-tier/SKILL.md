@@ -25,3 +25,23 @@ description: >-
 
 ## Fail = redo
 Looks like PPT / 电商主图 / 毕业证书 / garbled text / 缺竖版 3:4.
+
+## 常见错误
+- 让图像模型直接画中文字。
+- 大字超过 11 个，或缩到 25% 读不出。
+- 文字压在右下角时长角标或底部信息栏上。
+- 用未经授权的真人照片或 AI 生成的真人。
+- 只交横版。
+
+## 输出模板
+```
+| 项 | 横 4:3 1440×1080 | 竖 3:4 1080×1440 |
+| 大字（≤11 字，高亮词） | | |
+| 主体物件及占比 | | |
+| 文字框坐标 | | |
+| 25% 缩略图自检 | | |
+交付: cover_4x3.png, cover_3x4.png（每个位置一个终稿）
+```
+
+## 工具
+`scripts/check_cover.py cover.png boxes.json`：查尺寸比例、文字框是否在安全区、3:4 主标题字高是否 ≥14%。尺寸表见 [references/sizes-and-safe-zones.md](references/sizes-and-safe-zones.md)，反例见 [references/fail-patterns.md](references/fail-patterns.md)。

@@ -16,14 +16,8 @@ Positioning: one everyday annoyance → why it happens (one mechanism, sourced) 
 Score 1–5 on 痛点普遍度 / 立刻可做 / 反常识 / 证据强度 / 画面感; produce only ≥18/25.
 
 ## 2. Script template (35–55s, ~180–260 字)
-```
-0–3s  钩子: 痛点场景或反常识一句 (≤18字) + 首帧即封面
-3–12s 你是不是也…(1–2个具体场景，一个小笑点)
-12–28s 为什么: 一个机制，一个类比，一个出处(屏上标注)
-28–45s 今晚就试: 1–3步，带数字(温度/时间/次数)
-45–55s 别这样做/谁不适合 + 回扣开头 + 一句可转发金句
-```
-Rules: one mechanism only; numbers from the source; a light laugh every 10–15s; plant a prop early that pays off at the end; no effect names in titles.
+五段：钩子 → 你是不是也 → 为什么（一个机制+出处）→ 今晚就试（带数字）→ 别这样做+回扣。写完用 `scripts/check_script_timing.py` 查时长和语速。
+详见 [references/script-template.md](references/script-template.md)。
 
 ## 3. Production checklist
 - [ ] Script + fact table → 审核 PASS before visuals.
@@ -40,3 +34,23 @@ Hand to 增长运营 for cross-posting drafts. Nothing is published without 负�
 
 ## 5. After posting
 Request 48h metrics from 数据复盘; log which hook/tip type won; feed into next topic scoring.
+
+## 常见错误
+- 一条片子讲两个机制。
+- 数字不是来源里的，是「大概」。
+- 小招有风险却没写谁不适合。
+- 钩子超过 18 字，或 0 秒还在铺垫。
+- 片尾没有回扣开头。
+
+## 输出模板
+```
+选题打分: 痛点 x / 立刻可做 x / 反常识 x / 证据 x / 画面 x = xx/25
+0–3s 钩子: …
+3–12s 场景: …
+12–28s 为什么: …（出处: …）
+28–45s 今晚就试: …
+45–55s 别这样/谁不适合: …
+```
+
+## 工具
+`scripts/check_script_timing.py SCRIPT.txt`：查总时长是否在 35–55 秒、各段是否衔接、语速是否在 3–6 字/秒、钩子是否 ≤18 字、有没有标出处。
