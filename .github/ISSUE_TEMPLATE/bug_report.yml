@@ -1,0 +1,59 @@
+name: "🐞 问题反馈 / Bug report"
+description: "技能没被触发、输出不对或文档有错 / A skill misfires, gives wrong output, or the docs are wrong"
+title: "[bug] <skill-name>: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请**不要**粘贴真实姓名、账号名、联系方式、真人照片或任何 token / 密码。
+        Thanks! Please do **not** paste real names, account handles, contact info, real-person photos, or any tokens/passwords.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: "涉及的技能 / Skill"
+      options:
+        - content-fact-compliance
+        - content-data-review
+        - content-packaging-ab
+        - cover-top-tier
+        - content-growth-ops
+        - life-tip-producer
+        - 其他 / other
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: "Agent 与版本 / Agent & version"
+      placeholder: "Claude Code 2.x / Codex / Cursor …"
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: "你对 agent 说了什么 / What you asked the agent"
+      description: "脱敏后的原话 / The prompt, anonymized"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "期望结果 / Expected"
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: "实际结果 / Actual"
+      description: "技能没触发？输出哪一步不对？可贴脱敏截图 / Not triggered? Which step went wrong? Anonymized screenshots welcome."
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "确认 / Checklist"
+      options:
+        - label: "我已更新到最新版本 / I'm on the latest version"
+        - label: "内容已脱敏，无隐私和密钥 / Content is anonymized, no private data or secrets"
+          required: true

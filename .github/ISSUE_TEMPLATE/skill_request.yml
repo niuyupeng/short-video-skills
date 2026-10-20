@@ -1,0 +1,49 @@
+name: "💡 新技能建议 / New skill request"
+description: "提一个短视频团队反复踩的坑，我们把它做成技能 / Describe a recurring short-video pain point to turn into a skill"
+title: "[skill] "
+labels: ["skill-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        好技能来自真实、反复出现的痛点。请描述你遇到的情况，而不是只给一个名字。
+        Great skills come from real, recurring pain. Describe the situation, not just a name.
+  - type: textarea
+    id: pain
+    attributes:
+      label: "痛点 / Pain point"
+      description: "什么时候发生、多久一次、现在怎么解决、代价是什么 / When it happens, how often, current workaround, cost"
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: "触发场景 / When should it trigger?"
+      description: "你会怎么对 agent 说？给 2–3 句真实说法 / 2–3 real phrases you'd say to the agent"
+      placeholder: "「帮我把这条横版片改成小红书版」"
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: "期望产出 / Expected output"
+      description: "文件、表格、清单？越具体越好 / Files, tables, checklists — be specific"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "平台 / Platform"
+      multiple: true
+      options: [抖音 Douyin, B站 Bilibili, 小红书 Xiaohongshu, 视频号 WeChat Channels, YouTube, 其他 / other]
+  - type: textarea
+    id: refs
+    attributes:
+      label: "参考 / References"
+      description: "相关仓库或资料链接（只给链接，不贴受版权保护的内容）/ Links only, no copyrighted text"
+  - type: checkboxes
+    id: contrib
+    attributes:
+      label: "参与 / Contribution"
+      options:
+        - label: "我愿意提交 PR / I'd like to submit a PR"

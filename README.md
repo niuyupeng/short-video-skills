@@ -2,6 +2,7 @@
 
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-black" alt="MIT"></a>
+  <a href="https://github.com/niuyupeng/short-video-skills/releases"><img src="https://img.shields.io/github/v/release/niuyupeng/short-video-skills?include_prereleases&label=version&color=d4af37" alt="version"></a>
   <img src="https://img.shields.io/badge/skills-6-d4af37" alt="6 skills">
   <img src="https://img.shields.io/badge/format-SKILL.md-555" alt="SKILL.md">
   <img src="https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-444" alt="agents">
@@ -42,7 +43,11 @@ cp -R short-video-skills/skills/* ~/.claude/skills/      # Claude Code
 | life-tip-producer | 35–55 秒「今晚就能试」的生活小招，从选题到交付 | 「做一条生活小招」 |
 
 ## 效果
-<!-- TODO：放 3 张真实截图：拆解表 / VETO 报告 / 封面 A/B 对比。不放假图。 -->
+以下三张图都来自团队真实工作记录（已脱敏，未附任何效果数据）。每个技能的完整「输入 → 输出」样例见 [examples/](./examples/)。
+
+| 事实核查：逐句对原文 | 包装 A/B：一版一个杠杆 | 数据复盘：没有数据不下结论 |
+|---|---|---|
+| <img src="./assets/demo_factcheck.png" alt="fact-check demo"> | <img src="./assets/demo_packaging_ab.png" alt="packaging A/B demo"> | <img src="./assets/demo_data_review.png" alt="data review demo"> |
 
 ## 设计原则
 1. description 只写触发条件，正文少于 500 行
@@ -62,6 +67,7 @@ cp -R short-video-skills/skills/* ~/.claude/skills/      # Claude Code
 ```bash
 npx skills add niuyupeng/short-video-skills
 ```
+Real input→output examples for every skill: [examples/](./examples/).
 Works with any agent that reads `SKILL.md` (Claude Code, Codex, Cursor…). MIT licensed.
 
 ---
