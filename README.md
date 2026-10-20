@@ -3,7 +3,7 @@
 <p align="center">
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-black" alt="MIT"></a>
   <a href="https://github.com/niuyupeng/short-video-skills/releases"><img src="https://img.shields.io/github/v/release/niuyupeng/short-video-skills?include_prereleases&label=version&color=d4af37" alt="version"></a>
-  <img src="https://img.shields.io/badge/skills-6-d4af37" alt="6 skills">
+  <img src="https://img.shields.io/badge/skills-7-d4af37" alt="7 skills">
   <img src="https://img.shields.io/badge/format-SKILL.md-555" alt="SKILL.md">
   <img src="https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-444" alt="agents">
   <a href="https://github.com/niuyupeng/short-video-skills/stargazers"><img src="https://img.shields.io/github/stars/niuyupeng/short-video-skills?style=social" alt="stars"></a>
@@ -41,6 +41,9 @@ cp -R short-video-skills/skills/* ~/.claude/skills/      # Claude Code
 | cover-top-tier | 知识类封面硬性标准（横 4:3 + 竖 3:4） | 「按顶级标准做封面」 |
 | content-growth-ops | 已发视频改投其他平台，并出评论运营草稿 | 「把这条改成 B 站和小红书版」 |
 | life-tip-producer | 35–55 秒「今晚就能试」的生活小招，从选题到交付 | 「做一条生活小招」 |
+| reference-first-script | 先拆参考片的钩子、笑点、节奏，再写口播稿，最后逐句对标打分（及格线 40/50 是默认值，可以按自己团队调整） | 「照着这条参考片的感觉写一篇」 |
+
+**测试**：每个技能在 [evals/](./evals/) 下都有测试用例（含不该触发的反例），装技能 / 不装技能对比的实测结果见 [evals/RESULTS.md](./evals/RESULTS.md)。
 
 ## 效果
 以下三张图都来自团队真实工作记录（已脱敏，未附任何效果数据）。每个技能的完整「输入 → 输出」样例见 [examples/](./examples/)。
@@ -67,7 +70,7 @@ cp -R short-video-skills/skills/* ~/.claude/skills/      # Claude Code
 ```bash
 npx skills add niuyupeng/short-video-skills
 ```
-Real input→output examples for every skill: [examples/](./examples/).
+Real input→output examples for every skill: [examples/](./examples/). Test cases for all 7 skills live in [evals/](./evals/); with-skill vs. baseline results: [evals/RESULTS.md](./evals/RESULTS.md).
 Works with any agent that reads `SKILL.md` (Claude Code, Codex, Cursor…). MIT licensed.
 
 ---

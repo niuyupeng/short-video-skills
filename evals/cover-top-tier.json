@@ -1,0 +1,56 @@
+{
+  "skill_name": "cover-top-tier",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "按顶级标准做封面，题目是『吐牙膏后要不要漱口』。",
+      "input": "题目与一句核心结论。",
+      "expected_output": "横 4:3 + 竖 3:4 封面设计说明，满足硬性规则",
+      "expectations": [
+        "同时交付横 4:3 和竖 3:4 规格",
+        "主标题两行、合计不超过 11 字",
+        "有一个占画面 50% 以上的实物道具或场景，不是纯渐变底",
+        "文字用字体后期叠加，不让图像模型直接生成中文"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "这张封面看起来像 PPT，帮我审一下。",
+      "input": "封面描述：渐变蓝底、居中四行小字、金色奖章和头像证书框。",
+      "expected_output": "判定重做并逐条说明",
+      "expectations": [
+        "判定为 Fail = redo",
+        "指出纯渐变底、字数过多、徽章堆叠等具体问题",
+        "给出可执行的改法"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "只出一张横版封面就行。",
+      "input": "无",
+      "expected_output": "提醒竖版 3:4 也必须出",
+      "expectations": [
+        "说明缺竖版 3:4 属于不合格",
+        "仍给出两种比例的方案或明确说明风险"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我写视频的简介文案。",
+      "input": "无",
+      "expected_output": "不应触发",
+      "expectations": [
+        "不输出封面规格"
+      ],
+      "files": []
+    }
+  ]
+}

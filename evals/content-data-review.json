@@ -1,0 +1,59 @@
+{
+  "skill_name": "content-data-review",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "复盘一下这条视频的数据。",
+      "input": "只给了片名，没有任何截图或导出数据。",
+      "expected_output": "不编数字，写『无数据』并索要后台截图",
+      "expectations": [
+        "所有指标栏为『无数据』或空，不出现任何估算数字",
+        "明确列出需要用户提供的截图（如完播率、3 秒留存）",
+        "不下性能结论"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "这条片子 3 秒留存很好但完播率低，帮我看看问题在哪。",
+      "input": "用户提供的表格：3s留存、完播率、各秒留存曲线截图（测试时由评测者自备真实或合成样本，并在结果中注明是合成）。",
+      "expected_output": "按漏斗顺序诊断，定位掉点秒数与对应台词/画面",
+      "expectations": [
+        "先判断瓶颈阶段为完播，而非钩子",
+        "要求或指出具体掉点秒数及该处台词/画面",
+        "每个数字注明来源和采集时间",
+        "只与同账号近 10 条中位数比较"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "做一下本周的对标账号拆解。",
+      "input": "3 个对标账号的公开主页链接。",
+      "expected_output": "每个账号 Top3 帖子的钩子、节拍、时长、可借鉴/不可照抄",
+      "expectations": [
+        "输出包含逐条拆解表",
+        "给出 5 行可借鉴清单并对应具体下一条选题",
+        "声明只学思路不抄内容",
+        "不使用登录自动化或爬虫"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": true,
+      "trigger_prompt": "播放才 300，帮我分析为什么没爆。",
+      "input": "播放 300 的截图。",
+      "expected_output": "提示样本太小不下结论",
+      "expectations": [
+        "出现『样本太小，不下结论』或同义表述",
+        "不做因果归因"
+      ],
+      "files": []
+    }
+  ]
+}

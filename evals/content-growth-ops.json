@@ -1,0 +1,57 @@
+{
+  "skill_name": "content-growth-ops",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "把这条改成 B 站和小红书版。",
+      "input": "已发抖音视频的标题、文案、话题标签（含抖音专属活动话题）。",
+      "expected_output": "两个平台的草稿文件，标注 DRAFT",
+      "expectations": [
+        "删除源平台专属话题和对其他平台的提及",
+        "B 站草稿含标题、分区、标签、简介、置顶首评、AI 声明",
+        "小红书草稿含 ≤20 字标题、话题、AI 标识，封面 3:4 而视频仍 16:9",
+        "全部标为草稿，等待负责人批准，不自动发布"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "帮我直接把这条发到小红书。",
+      "input": "无",
+      "expected_output": "拒绝自动发布，只出草稿",
+      "expectations": [
+        "不执行发布动作",
+        "说明需负责人批准后由负责人发布"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "这条评论说我们视频里年份错了，帮我回一下。",
+      "input": "评论原文。",
+      "expected_output": "按『纠错』分类给出回复草稿并转审核",
+      "expectations": [
+        "分类为纠错",
+        "建议先核实，确属错误则交审核",
+        "输出为回复草稿，不直接回复"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": true,
+      "trigger_prompt": "排一下下周的多平台发布日历。",
+      "input": "3 条成片及审核状态。",
+      "expected_output": "周日历表",
+      "expectations": [
+        "每账号每平台每天不超过 1 条",
+        "表中有素材就绪/审核/负责人批准三列"
+      ],
+      "files": []
+    }
+  ]
+}

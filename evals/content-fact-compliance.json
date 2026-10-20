@@ -1,0 +1,59 @@
+{
+  "skill_name": "content-fact-compliance",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "帮我核一下这篇口播稿，明天要拍。",
+      "input": "口播稿片段：『爱因斯坦 1905 年发表了布朗运动论文；每天喝 8 杯水能排毒。』",
+      "expected_output": "逐条事实表 + PASS/FIX/VETO 结论",
+      "expectations": [
+        "输出包含逐条事实表，列出原句、类型、一手来源、结论",
+        "爱因斯坦 1905 一条给出可核查的一手出处（期刊卷页或 DOI），找不到时明确写未核实而非编造",
+        "『排毒』被标为健康类风险，要求删或改，并说明理由",
+        "给出明确的总结论（PASS / FIX / VETO 之一）和复审条件",
+        "没有编造任何 DOI、页码或数据"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "这条生活小招片子要发了，最后审一遍。",
+      "input": "成片说明：标题『根治失眠的一个动作』，首评『点赞领秘籍』。",
+      "expected_output": "识别标题违规与引流首评，给出 FIX 或 VETO",
+      "expectations": [
+        "指出『根治』属于医疗承诺/极限词",
+        "指出首评属于诱导互动",
+        "提醒检查 AI 如实标识",
+        "结论不是 PASS"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "这句对吗？『苹果一落地，牛顿当场想出了万有引力，还写进了论文』。",
+      "input": "单句核查",
+      "expected_output": "指出苹果故事来自牛顿晚年的口述回忆（经斯蒂克利等人记录），不是『当场』，也不在论文里",
+      "expectations": [
+        "给出一手或可靠来源（如斯蒂克利回忆录）",
+        "指出时间表述问题并给改法（如『他后来回忆说』）",
+        "指出『写进论文』不准确"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我写一篇关于黑洞的口播稿。",
+      "input": "无",
+      "expected_output": "不应触发本技能（这是写稿需求，不是核查）",
+      "expectations": [
+        "不输出 PASS/FIX/VETO 审核结论格式"
+      ],
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "skill_name": "reference-first-script",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "照着这个参考片的感觉写一篇口播稿。",
+      "input": "参考片：一条知识类搞笑口播（评测者自备，可提供逐字稿或仅画面）。题目：牛顿为什么没被苹果砸傻。",
+      "expected_output": "先产出参考拆解，再写稿，再逐句对比打分",
+      "expectations": [
+        "在写稿之前先输出参考拆解（钩子、笑点密度、节奏、反转位置、时长），且每项标注【观察到的/推断的】",
+        "没有拆解时不直接写稿",
+        "稿子第 0 秒第一句就是问题，没有铺垫",
+        "最后输出五项对比评分表和修改意见",
+        "不复制参考片台词"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "帮我审一下这篇稿子写得好不好看。",
+      "input": "稿子：开头『其实苹果可能根本没砸到他』就解释了笑话；中段先叫他『科学家』又叫他『果农』；结尾 B 选项『躲开苹果，让它砸下来』。",
+      "expected_output": "逐句标出违反规则处",
+      "expectations": [
+        "指出开头先给谜底/解释笑话",
+        "指出对同一对象称呼不一致",
+        "指出 B 选项语义自相矛盾",
+        "给出具体改句"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "参考片没有声音，还能拆吗？",
+      "input": "只有画面和弹幕截图。",
+      "expected_output": "走降级路径并说明受影响的判断",
+      "expectations": [
+        "明确声明无音轨/逐字稿",
+        "说明哪些项（如节奏、笑点密度）只能推断",
+        "评分标注为非终审"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": true,
+      "trigger_prompt": "稿子里写『苹果一落地，牛顿当场想出了万有引力』，帮我过一下。",
+      "input": "单句",
+      "expected_output": "指出时间错位并改成『后来回忆说』之类",
+      "expectations": [
+        "指出后来发生的事被说成当场",
+        "给出改句",
+        "建议交事实核查技能确认出处"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "should_trigger": false,
+      "trigger_prompt": "帮我核一下这篇稿子的 DOI 对不对。",
+      "input": "无",
+      "expected_output": "不应触发（交给事实核查技能）",
+      "expectations": [
+        "不输出写作五项评分"
+      ],
+      "files": []
+    }
+  ]
+}

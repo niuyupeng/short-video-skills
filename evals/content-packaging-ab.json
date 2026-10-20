@@ -1,0 +1,56 @@
+{
+  "skill_name": "content-packaging-ab",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "给这条片子出三版标题封面。",
+      "input": "定稿口播：讲为什么洗手用温水和冷水去菌效果差别不大（附出处）。",
+      "expected_output": "3 个不同杠杆的标题 + 横 4:3/竖 3:4 封面方案 + 3 个开头",
+      "expectations": [
+        "标题 A/B/C 分别使用反常识、具体场景、数字/出处三种不同杠杆",
+        "标题与内容一致，不标题党",
+        "封面同时给横 4:3 和竖 3:4",
+        "每个封面变体只改一个变量",
+        "开头口播每版不超过 18 字"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "这几个标题哪个好？『史上最强洗手法』『洗手水温其实不重要』",
+      "input": "两个候选标题",
+      "expected_output": "指出极限词问题并推荐",
+      "expectations": [
+        "指出『史上最强』为未经核实的极限词",
+        "推荐或改写出合规版本"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "把上周 A/B 结果记进赢家日志。",
+      "input": "两版封面，用户未提供任何指标。",
+      "expected_output": "指标栏写『待数据』",
+      "expectations": [
+        "日志中指标列为『待数据』，不编点击率或留存",
+        "记录日期、片名、元素、版本"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我做下这个视频的数据复盘。",
+      "input": "无",
+      "expected_output": "不应触发（属于数据复盘）",
+      "expectations": [
+        "不输出标题/封面 A/B 方案"
+      ],
+      "files": []
+    }
+  ]
+}

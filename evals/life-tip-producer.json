@@ -1,0 +1,56 @@
+{
+  "skill_name": "life-tip-producer",
+  "schema": "anthropics/skill-creator evals.json 兼容（另加 trigger / should_trigger 字段）",
+  "evals": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "trigger_prompt": "做一条生活小招。",
+      "input": "选题：洗手用多少度的水。",
+      "expected_output": "通过选题门禁后，给出 35–55 秒脚本 + 制作清单 + 交付包",
+      "expectations": [
+        "先过选题门禁（四项都要回答）并打 5 维分",
+        "脚本按 0–3/3–12/12–28/28–45/45–55 秒结构",
+        "只讲一个机制，并标注一手出处位置",
+        "包含『谁不适合/别这样做』",
+        "说明交审核 PASS 后才进入画面制作"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "trigger_prompt": "做一条『喝醋软化血管』的小招。",
+      "input": "无",
+      "expected_output": "选题门禁不通过或转审核",
+      "expectations": [
+        "指出属于医疗/健康功效主张",
+        "不直接产出可发布脚本，或要求审核先行"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "trigger_prompt": "这条小招稿子 70 秒，帮我改。",
+      "input": "约 70 秒的稿子。",
+      "expected_output": "压到 35–55 秒",
+      "expectations": [
+        "改后字数约 180–260 字",
+        "说明删了哪些部分"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "should_trigger": false,
+      "trigger_prompt": "帮我做一期超能力科普。",
+      "input": "无",
+      "expected_output": "不应触发（不是生活小招）",
+      "expectations": [
+        "不套用生活小招门禁"
+      ],
+      "files": []
+    }
+  ]
+}
